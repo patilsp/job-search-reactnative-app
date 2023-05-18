@@ -17,7 +17,7 @@ const JobSearch = () => {
     const [searchError, setSearchError] = useState(null);
     const [page, setPage] = useState(1);
 
-    const handleSearch = async () => {
+    const handleSearch = async() => {
         setSearchLoader(true);
         setSearchResult([])
 
@@ -26,7 +26,7 @@ const JobSearch = () => {
                 method: "GET",
                 url: `https://jsearch.p.rapidapi.com/search`,
                 headers: {
-                    "X-RapidAPI-Key": '',
+                    "X-RapidAPI-Key": '3f47a60c17msh25e3aa0189b9a13p1458d0jsnaeac83214b63',
                     "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
                 },
                 params: {
@@ -59,77 +59,95 @@ const JobSearch = () => {
         handleSearch()
     }, [])
 
-    return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
-            <Stack.Screen
-                options={{
-                    headerStyle: { backgroundColor: COLORS.lightWhite },
-                    headerShadowVisible: false,
-                    headerLeft: () => (
-                        <ScreenHeaderBtn
-                            iconUrl={icons.left}
-                            dimension='60%'
-                            handlePress={() => router.back()}
-                        />
-                    ),
-                    headerTitle: "",
-                }}
-            />
-
-            <FlatList
-                data={searchResult}
-                renderItem={({ item }) => (
-                    <NearbyJobCard
-                        job={item}
-                        handleNavigate={() => router.push(`/job-details/${item.job_id}`)}
+    return ( <
+        SafeAreaView style = {
+            { flex: 1, backgroundColor: COLORS.lightWhite } } >
+        <
+        Stack.Screen options = {
+            {
+                headerStyle: { backgroundColor: COLORS.lightWhite },
+                headerShadowVisible: false,
+                headerLeft: () => ( <
+                    ScreenHeaderBtn iconUrl = { icons.left }
+                    dimension = '60%'
+                    handlePress = {
+                        () => router.back() }
                     />
-                )}
-                keyExtractor={(item) => item.job_id}
-                contentContainerStyle={{ padding: SIZES.medium, rowGap: SIZES.medium }}
-                ListHeaderComponent={() => (
-                    <>
-                        <View style={styles.container}>
-                            <Text style={styles.searchTitle}>{params.id}</Text>
-                            <Text style={styles.noOfSearchedJobs}>Job Opportunities</Text>
-                        </View>
-                        <View style={styles.loaderContainer}>
-                            {searchLoader ? (
-                                <ActivityIndicator size='large' color={COLORS.primary} />
-                            ) : searchError && (
-                                <Text>Oops something went wrong</Text>
-                            )}
-                        </View>
-                    </>
-                )}
-                ListFooterComponent={() => (
-                    <View style={styles.footerContainer}>
-                        <TouchableOpacity
-                            style={styles.paginationButton}
-                            onPress={() => handlePagination('left')}
-                        >
-                            <Image
-                                source={icons.chevronLeft}
-                                style={styles.paginationImage}
-                                resizeMode="contain"
-                            />
-                        </TouchableOpacity>
-                        <View style={styles.paginationTextBox}>
-                            <Text style={styles.paginationText}>{page}</Text>
-                        </View>
-                        <TouchableOpacity
-                            style={styles.paginationButton}
-                            onPress={() => handlePagination('right')}
-                        >
-                            <Image
-                                source={icons.chevronRight}
-                                style={styles.paginationImage}
-                                resizeMode="contain"
-                            />
-                        </TouchableOpacity>
-                    </View>
-                )}
-            />
-        </SafeAreaView>
+                ),
+                headerTitle: "",
+            }
+        }
+        />
+
+        <
+        FlatList data = { searchResult }
+        renderItem = {
+            ({ item }) => ( <
+                NearbyJobCard job = { item }
+                handleNavigate = {
+                    () => router.push(`/job-details/${item.job_id}`) }
+                />
+            )
+        }
+        keyExtractor = {
+            (item) => item.job_id }
+        contentContainerStyle = {
+            { padding: SIZES.medium, rowGap: SIZES.medium } }
+        ListHeaderComponent = {
+            () => ( <
+                >
+                <
+                View style = { styles.container } >
+                <
+                Text style = { styles.searchTitle } > { params.id } < /Text> <
+                Text style = { styles.noOfSearchedJobs } > Job Opportunities < /Text> <
+                /View> <
+                View style = { styles.loaderContainer } > {
+                    searchLoader ? ( <
+                        ActivityIndicator size = 'large'
+                        color = { COLORS.primary }
+                        />
+                    ) : searchError && ( <
+                        Text > Oops something went wrong < /Text>
+                    )
+                } <
+                /View> <
+                />
+            )
+        }
+        ListFooterComponent = {
+            () => ( <
+                View style = { styles.footerContainer } >
+                <
+                TouchableOpacity style = { styles.paginationButton }
+                onPress = {
+                    () => handlePagination('left') } >
+                <
+                Image source = { icons.chevronLeft }
+                style = { styles.paginationImage }
+                resizeMode = "contain" /
+                >
+                <
+                /TouchableOpacity> <
+                View style = { styles.paginationTextBox } >
+                <
+                Text style = { styles.paginationText } > { page } < /Text> <
+                /View> <
+                TouchableOpacity style = { styles.paginationButton }
+                onPress = {
+                    () => handlePagination('right') } >
+                <
+                Image source = { icons.chevronRight }
+                style = { styles.paginationImage }
+                resizeMode = "contain" /
+                >
+                <
+                /TouchableOpacity> <
+                /View>
+            )
+        }
+        /> <
+        /SafeAreaView>
     )
 }
 
