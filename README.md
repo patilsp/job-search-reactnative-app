@@ -1,5 +1,5 @@
 # Build and Deploy a React Native App | 2023 React Native Course Tutorial for Beginners
-![RN Course](https://i.ibb.co/VWMxgZz/File-cover-8.png)
+![image](https://github.com/patilsp/job-search-reactnative-app/assets/35653819/b14b3912-05f8-44d6-afa4-06f09395df37)
 
 ## Introduction
 The existence of React Native makes React one of the most valuable skills to have. Learn how to transform 75% of your knowledge from making websites into building mobile applications today!
